@@ -2,6 +2,9 @@ import { Field, InputType } from 'type-graphql';
 
 @InputType()
 class AuthorInput {
+  @Field({nullable: true})
+  readonly id: number;
+  
   @Field()
   readonly name: string;
 }

@@ -15,14 +15,26 @@ class AuthorResolver {
   }
   @Query(() => Author, {nullable: true})
   public async author(@Args('id') id: number): Promise<Author> {
-    return  this.repoService.authorRepo.findOne({where: {id}});
+    return this.repoService.authorRepo.findOne({where: { id }});
   }
 
   @Mutation(() => Author)
   public async createAuthor(@Args('data') input: AuthorInput): Promise<Author> {
-    const author = this.repoService.authorRepo.create({name: input.name});
-    return  this.repoService.authorRepo.save(author);
+    const author = this.repoService.authorRepo.create({ name: input.name });
+    return this.repoService.authorRepo.save(author);
   }
+
+  @Mutation(() => Author)
+  public async updateAuthor(@Args('data') input: AuthorInput): Promise<Author> { 
+    const { id, name } = input;
+
+    const authorFinded = await this.repoService.authorRepo.findOne({ where: { id } });
+
+    authorFinded.name = name;
+    
+    return this.repoService.authorRepo.save(authorFinded);
+  }
+
 }
 
 export default AuthorResolver;
