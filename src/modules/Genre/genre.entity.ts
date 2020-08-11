@@ -8,8 +8,8 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
   
-import BookGenre from './book-genre.entity';
-import Book from './book.entity';
+import Book from '../Book/book.entity';
+import BookGenre from '../BookGenre/book-genre.entity';
   
 @ObjectType()
 @Entity({name: 'genres'})

@@ -10,8 +10,8 @@ import {
   ManyToOne,
 } from 'typeorm';
   
-import BookGenre from './book-genre.entity';
-import Author from './author.entity';
+import Author from '../Author/author.entity';
+import BookGenre from '../BookGenre/book-genre.entity';
   
 @ObjectType()
 @Entity({name: 'books'})

@@ -2,10 +2,10 @@ import { Global, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import RepoService from './repo.service';
-import Author from './db/models/author.entity';
-import Book from './db/models/book.entity';
-import Genre from './db/models/genre.entity';
-import BookGenre from './db/models/book-genre.entity';
+import Author from './modules/Author/author.entity';
+import Book from './modules/Book/book.entity';
+import Genre from './modules/Genre/genre.entity';
+import BookGenre from './modules/BookGenre/book-genre.entity';
 
 @Global()
 @Module({

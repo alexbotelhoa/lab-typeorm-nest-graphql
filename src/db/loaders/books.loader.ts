@@ -1,8 +1,8 @@
 import DataLoader = require('dataloader');
 import { getRepository } from 'typeorm';
 
-import Book from '../models/book.entity';
-import BookGenre from '../models/book-genre.entity';
+import Book from '../../modules/Book/book.entity';
+import BookGenre from '../../modules/BookGenre/book-genre.entity';
 
 const batchBooks = async (genreIds: string[]) => {
   const bookGenres = await getRepository(BookGenre)

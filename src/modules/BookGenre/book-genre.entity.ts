@@ -9,8 +9,8 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-import Genre from './genre.entity';
-import Book from './book.entity';
+import Book from '../Book/book.entity';
+import Genre from '../Genre/genre.entity';
 
 @ObjectType()
 @Entity({name: 'books_genres'})

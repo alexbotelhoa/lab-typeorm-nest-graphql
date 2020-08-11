@@ -8,7 +8,7 @@ import {
   UpdateDateColumn 
 } from 'typeorm';
 
-import Book from './book.entity';
+import Book from '../Book/book.entity';
 
 @ObjectType()
 @Entity({name: 'authors'})

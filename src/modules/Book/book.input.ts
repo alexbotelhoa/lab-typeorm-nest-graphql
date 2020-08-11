@@ -1,6 +1,6 @@
 import { Field, InputType } from 'type-graphql';
 
-import AuthorInput from './author.input';
+import AuthorInput from '../Author/author.input';
 
 @InputType()
 class BookAuthorConnectInput {

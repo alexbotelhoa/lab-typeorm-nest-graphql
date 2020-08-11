@@ -1,9 +1,16 @@
-import { Args, Mutation, Parent, Query, ResolveProperty, Resolver } from '@nestjs/graphql';
+import { 
+  Args, 
+  Mutation, 
+  Parent, 
+  Query, 
+  ResolveProperty, 
+  Resolver 
+} from '@nestjs/graphql';
 
-import RepoService from '../repo.service';
-import Author from '../db/models/author.entity';
-import Book from '../db/models/book.entity';
-import BookInput from './input/book.input';
+import RepoService from '../../repo.service';
+import Author from '../Author/author.entity';
+import Book from '../Book/book.entity';
+import BookInput from '../Book/book.input';
 
 @Resolver(Book)
 class BookResolver {
