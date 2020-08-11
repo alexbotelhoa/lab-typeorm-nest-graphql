@@ -1,7 +1,8 @@
 import { Global, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import RepoService from './repo.service';
+import RepositoryService from './repository.service';
+
 import Author from './modules/Author/author.entity';
 import Book from './modules/Book/book.entity';
 import Genre from './modules/Genre/genre.entity';
@@ -17,12 +18,12 @@ import BookGenre from './modules/BookGenre/book-genre.entity';
       BookGenre,
     ]),
   ],
-  providers: [RepoService],
-  exports: [RepoService],
+  providers: [RepositoryService],
+  exports: [RepositoryService],
 })
 
-class RepoModule {
+class RepositoryModule {
 
 }
 
-export default RepoModule;
+export default RepositoryModule;

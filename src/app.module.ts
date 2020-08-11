@@ -5,25 +5,15 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
-import RepoModule from './repo.module';
-import AuthorResolver from './modules/Author/author.resolver';
-import BookResolver from './modules/Book/book.resolver';
-import GenreResolver from './modules/Genre/genre.resolver';
-import BookGenreResolver from './modules/BookGenre/book-genre.resolver';
+import RepositoryModule from './repository.module';
+import ResolverModule from './resolver.module';
 
 import { genreBooksLoader } from './db/loaders/books.loader';
 
-const graphQLImports = [
-  AuthorResolver,
-  BookResolver,
-  GenreResolver,
-  BookGenreResolver,
-];
-
 @Module({
   imports: [TypeOrmModule.forRoot(),
-    RepoModule,
-    ...graphQLImports,
+    RepositoryModule,
+    ...ResolverModule,
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql',
       playground: true,

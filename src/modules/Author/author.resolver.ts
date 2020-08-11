@@ -5,14 +5,14 @@ import {
   Resolver 
 } from '@nestjs/graphql';
 
-import RepoService from '../../repo.service';
+import RepositoryService from '../../repository.service';
 import Author from '../Author/author.entity';
 import AuthorInput from '../Author/author.input';
 
 @Resolver()
 class AuthorResolver {
   
-  constructor(private readonly repoService: RepoService) {}
+  constructor(private readonly repoService: RepositoryService) {}
 
   @Query(() => [Author])
   public async authors(): Promise<Author[]> {

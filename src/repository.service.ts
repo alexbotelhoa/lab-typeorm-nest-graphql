@@ -8,7 +8,7 @@ import Genre from './modules/Genre/genre.entity';
 import BookGenre from './modules/BookGenre/book-genre.entity';
 
 @Injectable()
-class RepoService {
+class RepositoryService {
   public constructor(
     @InjectRepository(Author) public readonly authorRepo: Repository<Author>,
     @InjectRepository(Book) public readonly bookRepo: Repository<Book>,
@@ -17,4 +17,4 @@ class RepoService {
   ) {}
 }
 
-export default RepoService;
+export default RepositoryService;

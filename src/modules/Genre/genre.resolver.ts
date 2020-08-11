@@ -8,7 +8,8 @@ import {
   Resolver 
 } from '@nestjs/graphql';
 
-import RepoService from '../../repo.service';
+import RepositoryService from '../../repository.service';
+
 import Book from '../Book/book.entity';
 import Genre from '../Genre/genre.entity';
 import GenreInput from '../Genre/genre.input';
@@ -18,7 +19,7 @@ import { IGraphQLContext } from '../../types/graphql.types';
 @Resolver(Genre)
 class GenreResolver {
   
-  constructor(private readonly repoService: RepoService) {}
+  constructor(private readonly repoService: RepositoryService) {}
 
   @Query(() => [Genre])
   public async genres(): Promise<Genre[]> {

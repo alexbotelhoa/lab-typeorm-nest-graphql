@@ -6,14 +6,15 @@ import {
 } from '@nestjs/graphql';
 import { Arg } from 'type-graphql';
 
-import RepoService from '../../repo.service';
+import RepositoryService from '../../repository.service';
+
 import BookGenre from '../BookGenre/book-genre.entity';
 import BookGenreInput from '../BookGenre/book-genre.input';
 
 @Resolver()
 class BookGenreResolver {
 
-  constructor(private readonly repoService: RepoService) {}
+  constructor(private readonly repoService: RepositoryService) {}
 
   @Query(() => [BookGenre])
   public async bookGenres(): Promise<BookGenre[]> {

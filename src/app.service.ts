@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 
-import RepoService from './repo.service';
+import RepositoryService from './repository.service';
 
 @Injectable()
 export class AppService {
 
-  constructor(private readonly repoService: RepoService) {
+  constructor(private readonly repoService: RepositoryService) {
 
   }
 

@@ -7,7 +7,7 @@ import {
   Resolver 
 } from '@nestjs/graphql';
 
-import RepoService from '../../repo.service';
+import RepositoryService from '../../repository.service';
 import Author from '../Author/author.entity';
 import Book from '../Book/book.entity';
 import BookInput from '../Book/book.input';
@@ -15,7 +15,7 @@ import BookInput from '../Book/book.input';
 @Resolver(Book)
 class BookResolver {
 
-  constructor(private readonly repoService: RepoService) {}
+  constructor(private readonly repoService: RepositoryService) {}
 
   @Query(() => [Book])
   public async books(): Promise<Book[]> {
