@@ -1,4 +1,5 @@
 import { Field, InputType } from 'type-graphql';
+
 import AuthorInput from './author.input';
 
 @InputType()

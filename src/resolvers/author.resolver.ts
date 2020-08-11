@@ -6,6 +6,7 @@ import AuthorInput from './input/author.input';
 
 @Resolver()
 class AuthorResolver {
+  
   constructor(private readonly repoService: RepoService) {}
 
   @Query(() => [Author])
@@ -23,4 +24,5 @@ class AuthorResolver {
     return  this.repoService.authorRepo.save(author);
   }
 }
+
 export default AuthorResolver;

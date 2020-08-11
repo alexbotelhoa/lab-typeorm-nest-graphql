@@ -8,8 +8,8 @@ import { IGraphQLContext } from '../types/graphql.types';
 
 @Resolver(Genre)
 class GenreResolver {
-
   constructor(private readonly repoService: RepoService) {}
+
   @Query(() => [Genre])
   public async genres(): Promise<Genre[]> {
     return this.repoService.genreRepo.find();

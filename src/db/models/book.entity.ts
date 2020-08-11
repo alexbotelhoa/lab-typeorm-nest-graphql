@@ -41,8 +41,7 @@ export default class Book {
   author: Author;
 
   // Associations
-  @ManyToOne(() => Author, author => author.bookConnection, {primary:
-      true})
+  @ManyToOne(() => Author, author => author.bookConnection, {primary: true})
   @JoinColumn({name: 'author_id'})
   authorConnection: Promise<Author>;
 

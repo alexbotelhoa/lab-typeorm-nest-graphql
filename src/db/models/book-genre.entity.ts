@@ -37,13 +37,11 @@ export default class BookGenre {
   updatedAt: Date;
 
   // Associations
-  @ManyToOne(() => Book, book => book.genreConnection, {primary:
-      true})
+  @ManyToOne(() => Book, book => book.genreConnection, {primary: true})
   @JoinColumn({name: 'book_id'})
   book: Promise<Book>;
 
-  @ManyToOne(() => Genre,  genre => genre.bookConnection, {primary:
-      true})
+  @ManyToOne(() => Genre,  genre => genre.bookConnection, {primary: true})
   @JoinColumn({name: 'genre_id'})
   genre: Promise<Genre>;
   

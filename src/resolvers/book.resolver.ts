@@ -9,6 +9,7 @@ import BookInput from './input/book.input';
 class BookResolver {
 
   constructor(private readonly repoService: RepoService) {}
+
   @Query(() => [Book])
   public async books(): Promise<Book[]> {
     return this.repoService.bookRepo.find();
@@ -21,7 +22,9 @@ class BookResolver {
   @Mutation(() => Book)
   public async createBook(@Args('data') input: BookInput): Promise<Book> {
     const book = new Book();
+    
     book.title = input.title;
+
     if (input.author.connect) {
       book.authorId = input.author.connect.id;
     } else {
@@ -32,6 +35,7 @@ class BookResolver {
       const savedAuthor = await this.repoService.authorRepo.save(authorToSave);
       book.authorId = savedAuthor.id;
     }
+
     return this.repoService.bookRepo.save(book);
   }
 
@@ -39,6 +43,7 @@ class BookResolver {
   public async author(@Parent() parent): Promise<Author> {
     return this.repoService.authorRepo.findOne(parent.authorId);
   }
+  
 }
 
 export default BookResolver;
