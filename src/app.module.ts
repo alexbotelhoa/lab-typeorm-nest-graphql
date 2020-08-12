@@ -8,7 +8,7 @@ import { AppService } from './app.service';
 import RepositoryModule from './repository.module';
 import ResolverModule from './resolver.module';
 
-import { genreBooksLoader } from './db/loaders/books.loader';
+import { genreBooksLoader } from './modules/Loaders/books.loader';
 
 @Module({
   imports: [TypeOrmModule.forRoot(),

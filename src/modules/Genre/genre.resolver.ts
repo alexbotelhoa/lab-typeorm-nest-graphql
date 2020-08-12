@@ -14,7 +14,7 @@ import Book from '../Book/book.entity';
 import Genre from '../Genre/genre.entity';
 import GenreInput from '../Genre/genre.input';
 
-import { IGraphQLContext } from '../../types/graphql.types';
+import { IGraphQLContext } from '../Types/graphql.types';
 
 @Resolver(Genre)
 class GenreResolver {

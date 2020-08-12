@@ -1,4 +1,4 @@
-import { genreBooksLoader } from '../db/loaders/books.loader';
+import { genreBooksLoader } from '../Loaders/books.loader';
 
 export interface IGraphQLContext {
   genreBooksLoader: ReturnType<typeof genreBooksLoader>;
