@@ -7,23 +7,28 @@ import {
   Resolver 
 } from '@nestjs/graphql';
 
-import RepositoryService from '../../repository.service';
 import Author from '../Author/author.entity';
-import Book from '../Book/book.entity';
-import BookInput from '../Book/book.input';
+import AuthorService from '../Author/author.service';
+
+import Book from './book.entity';
+import BookInput from './book.input';
+import BookService from './book.service';
 
 @Resolver(Book)
 class BookResolver {
 
-  constructor(private readonly repoService: RepositoryService) {}
+  constructor(
+    private readonly authorService: AuthorService,
+    private readonly bookService: BookService
+  ) {}
 
   @Query(() => [Book])
   public async books(): Promise<Book[]> {
-    return this.repoService.bookRepo.find();
+    return this.bookService.bookRepo.find();
   }
   @Query(() => Book, {nullable: true})
   public async book(@Args('id') id: number): Promise<Book> {
-    return this.repoService.bookRepo.findOne({where: {id}});
+    return this.bookService.bookRepo.findOne({where: {id}});
   }
 
   @Mutation(() => Book)
@@ -38,17 +43,17 @@ class BookResolver {
       if (!input.author.create) {
         throw new Error('Either pass a valid author id for the book or provide a new author using the create input option');
       }
-      const authorToSave = this.repoService.authorRepo.create({name: input.author.create.name});
-      const savedAuthor = await this.repoService.authorRepo.save(authorToSave);
+      const authorToSave = this.authorService.authorRepo.create({name: input.author.create.name});
+      const savedAuthor = await this.authorService.authorRepo.save(authorToSave);
       book.authorId = savedAuthor.id;
     }
 
-    return this.repoService.bookRepo.save(book);
+    return this.bookService.bookRepo.save(book);
   }
 
   @ResolveProperty()
   public async author(@Parent() parent): Promise<Author> {
-    return this.repoService.authorRepo.findOne(parent.authorId);
+    return this.authorService.authorRepo.findOne(parent.authorId);
   }
   
 }

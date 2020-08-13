@@ -5,39 +5,39 @@ import {
   Resolver 
 } from '@nestjs/graphql';
 
-import RepositoryService from '../../repository.service';
-import Author from '../Author/author.entity';
-import AuthorInput from '../Author/author.input';
+import Author from './author.entity';
+import AuthorInput from './author.input';
+import AuthorService from './author.service';
 
 @Resolver()
 class AuthorResolver {
   
-  constructor(private readonly repoService: RepositoryService) {}
+  constructor(private readonly authorService: AuthorService) {}
 
   @Query(() => [Author])
   public async authors(): Promise<Author[]> {
-    return this.repoService.authorRepo.find();
+    return this.authorService.authorRepo.find();
   }
   @Query(() => Author, {nullable: true})
   public async author(@Args('id') id: number): Promise<Author> {
-    return this.repoService.authorRepo.findOne({where: { id }});
+    return this.authorService.authorRepo.findOne({where: { id }});
   }
 
   @Mutation(() => Author)
   public async createAuthor(@Args('data') input: AuthorInput): Promise<Author> {
-    const author = this.repoService.authorRepo.create({ name: input.name });
-    return this.repoService.authorRepo.save(author);
+    const author = this.authorService.authorRepo.create({ name: input.name });
+    return this.authorService.authorRepo.save(author);
   }
 
   @Mutation(() => Author)
   public async updateAuthor(@Args('data') input: AuthorInput): Promise<Author> { 
     const { id, name } = input;
 
-    const authorFinded = await this.repoService.authorRepo.findOne({ where: { id } });
+    const authorFinded = await this.authorService.authorRepo.findOne({ where: { id } });
 
     authorFinded.name = name;
     
-    return this.repoService.authorRepo.save(authorFinded);
+    return this.authorService.authorRepo.save(authorFinded);
   }
 
 }

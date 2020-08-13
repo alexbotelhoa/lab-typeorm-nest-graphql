@@ -8,33 +8,35 @@ import {
   Resolver 
 } from '@nestjs/graphql';
 
-import RepositoryService from '../../repository.service';
-
 import Book from '../Book/book.entity';
-import Genre from '../Genre/genre.entity';
-import GenreInput from '../Genre/genre.input';
+
+import Genre from './genre.entity';
+import GenreInput from './genre.input';
+import GenreService from './genre.service';
 
 import { IGraphQLContext } from '../Types/graphql.types';
 
 @Resolver(Genre)
 class GenreResolver {
   
-  constructor(private readonly repoService: RepositoryService) {}
+  constructor(
+    private readonly genreService: GenreService
+    ) {}
 
   @Query(() => [Genre])
   public async genres(): Promise<Genre[]> {
-    return this.repoService.genreRepo.find();
+    return this.genreService.genreRepo.find();
   }
   @Query(() => Genre, {nullable: true})
   public async genre(@Args('id') id: number): Promise<Genre> {
-    return this.repoService.genreRepo.findOne(id);
+    return this.genreService.genreRepo.findOne(id);
   }
 
   @Mutation(() => Genre)
   public async createGenre(@Args('data') input: GenreInput): Promise<Genre> {
     const genre = new Genre();
     genre.name = input.name;
-    return this.repoService.genreRepo.save(genre);
+    return this.genreService.genreRepo.save(genre);
   }
 
   @ResolveProperty()

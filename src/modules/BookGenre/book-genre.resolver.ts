@@ -1,29 +1,28 @@
+import { Arg } from 'type-graphql';
 import { 
   Args, 
   Mutation, 
   Query, 
   Resolver 
 } from '@nestjs/graphql';
-import { Arg } from 'type-graphql';
 
-import RepositoryService from '../../repository.service';
-
-import BookGenre from '../BookGenre/book-genre.entity';
-import BookGenreInput from '../BookGenre/book-genre.input';
+import BookGenre from './book-genre.entity';
+import BookGenreInput from './book-genre.input';
+import BookGenreService from './book-genre.service';
 
 @Resolver()
 class BookGenreResolver {
 
-  constructor(private readonly repoService: RepositoryService) {}
+  constructor(private readonly bookGenreService: BookGenreService) {}
 
   @Query(() => [BookGenre])
   public async bookGenres(): Promise<BookGenre[]> {
-    return this.repoService.bookGenreRepo.find();
+    return this.bookGenreService.bookGenreRepo.find();
   }
 
   @Query(() => BookGenre)
   public async bookGenre(@Arg('id') id: number): Promise<BookGenre> {
-    return this.repoService.bookGenreRepo.findOne(id);
+    return this.bookGenreService.bookGenreRepo.findOne(id);
   }
 
   @Mutation(() => BookGenre)
@@ -35,7 +34,7 @@ class BookGenreResolver {
     bookGenre.bookId = bookId;
     bookGenre.genreId = genreId;
 
-    return this.repoService.bookGenreRepo.save(bookGenre);
+    return this.bookGenreService.bookGenreRepo.save(bookGenre);
   }
 
 }

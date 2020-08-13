@@ -5,15 +5,22 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
-import RepositoryModule from './repository.module';
-import ResolverModule from './resolver.module';
+import AuthorModule from './modules/Author/author.module';
+import BookModule from './modules/Book/book.module';
+import BookGenreModule from './modules/BookGenre/book-genre.module';
+import GenreModule from './modules/Genre/genre.module';
 
 import { genreBooksLoader } from './modules/Loaders/books.loader';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(),
-    RepositoryModule,
-    ...ResolverModule,
+  imports: [
+    TypeOrmModule.forRoot(),
+
+    AuthorModule,
+    BookModule,
+    BookGenreModule,
+    GenreModule,
+
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql',
       playground: true,
@@ -22,8 +29,12 @@ import { genreBooksLoader } from './modules/Loaders/books.loader';
       },
     }),
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [
+    AppController
+  ],
+  providers: [
+    AppService
+  ],
 })
 
 export class AppModule {}

@@ -72,8 +72,8 @@ type Mutation {
   createAuthor(data: AuthorInput!): Author!
   updateAuthor(data: AuthorInput!): Author!
   createBook(data: BookInput!): Book!
-  createGenre(data: GenreInput!): Genre!
   createBookGenre(data: GenreBookInput!): BookGenre!
+  createGenre(data: GenreInput!): Genre!
 }
 
 type Query {
@@ -81,8 +81,8 @@ type Query {
   author(id: Float!): Author
   books: [Book!]!
   book(id: Float!): Book
-  genres: [Genre!]!
-  genre(id: Float!): Genre
   bookGenres: [BookGenre!]!
   bookGenre(id: Float!): BookGenre!
+  genres: [Genre!]!
+  genre(id: Float!): Genre
 }
