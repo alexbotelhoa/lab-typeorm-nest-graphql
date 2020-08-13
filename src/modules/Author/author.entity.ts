@@ -11,7 +11,7 @@ import {
 import Book from '../Book/book.entity';
 
 @ObjectType()
-@Entity({name: 'authors'})
+@Entity({ name: 'authors' })
 export default class Author {
 
   @Field()

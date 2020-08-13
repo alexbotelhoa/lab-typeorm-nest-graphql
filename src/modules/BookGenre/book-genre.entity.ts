@@ -13,7 +13,7 @@ import Book from '../Book/book.entity';
 import Genre from '../Genre/genre.entity';
 
 @ObjectType()
-@Entity({name: 'books_genres'})
+@Entity({ name: 'books_genres' })
 export default class BookGenre {
 
   @Field()
