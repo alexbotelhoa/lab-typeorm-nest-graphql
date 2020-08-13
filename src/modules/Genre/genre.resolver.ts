@@ -11,7 +11,7 @@ import {
 import Book from '../Book/book.entity';
 
 import Genre from './genre.entity';
-import GenreInput from './genre.input';
+import GenreDto from './genre.dto';
 import GenreService from './genre.service';
 
 import { IGraphQLContext } from '../Types/graphql.types';
@@ -33,12 +33,9 @@ class GenreResolver {
   }
 
   @Mutation(() => Genre)
-  public async createGenre(@Args('data') input: GenreInput): Promise<Genre> {
-    // const genre = new Genre();
-    // genre.name = input.name;
-    // return this.genreService.genreRepo.save(genre);
-
-    const genre = this.genreService.genreRepo.create({ name: input.name });
+  public async createGenre(@Args('data') input: GenreDto): Promise<Genre> {
+    const genre = new Genre();
+    genre.name = input.name;
     return this.genreService.genreRepo.save(genre);
   }
 

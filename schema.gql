@@ -10,7 +10,7 @@ type Author {
   updatedAt: DateTime!
 }
 
-input AuthorInput {
+input AuthorDto {
   id: Float
   name: String!
 }
@@ -24,13 +24,13 @@ type Book {
   author: Author!
 }
 
-input BookAuthorConnectInput {
+input BookAuthorConnectDto {
   id: Float!
 }
 
-input BookAuthorInput {
-  connect: BookAuthorConnectInput
-  create: AuthorInput
+input BookAuthorDto {
+  connect: BookAuthorConnectDto
+  create: AuthorDto
 }
 
 type BookGenre {
@@ -43,7 +43,7 @@ type BookGenre {
 
 input BookInput {
   title: String!
-  author: BookAuthorInput!
+  author: BookAuthorDto!
 }
 
 """
@@ -59,21 +59,21 @@ type Genre {
   book: [Book!]
 }
 
-input GenreBookInput {
+input GenreBookDto {
   genreId: Float!
   bookId: Float!
 }
 
-input GenreInput {
+input GenreDto {
   name: String!
 }
 
 type Mutation {
-  createAuthor(data: AuthorInput!): Author!
-  updateAuthor(data: AuthorInput!): Author!
+  createAuthor(data: AuthorDto!): Author!
+  updateAuthor(data: AuthorDto!): Author!
   createBook(data: BookInput!): Book!
-  createBookGenre(data: GenreBookInput!): BookGenre!
-  createGenre(data: GenreInput!): Genre!
+  createBookGenre(data: GenreBookDto!): BookGenre!
+  createGenre(data: GenreDto!): Genre!
 }
 
 type Query {

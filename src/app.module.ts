@@ -2,8 +2,8 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import DashboardController from './modules/Dashboard/dashboard.controller';
+import DashboardService from './modules/Dashboard/dashboard.service';
 
 import AuthorModule from './modules/Author/author.module';
 import BookModule from './modules/Book/book.module';
@@ -16,11 +16,13 @@ import { genreBooksLoader } from './modules/Loaders/books.loader';
   imports: [
     TypeOrmModule.forRoot(),
 
+    // Modulos
     AuthorModule,
     BookModule,
     BookGenreModule,
     GenreModule,
 
+    // GraphQL
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql',
       playground: true,
@@ -30,10 +32,10 @@ import { genreBooksLoader } from './modules/Loaders/books.loader';
     }),
   ],
   controllers: [
-    AppController
+    DashboardController
   ],
   providers: [
-    AppService
+    DashboardService
   ],
 })
 

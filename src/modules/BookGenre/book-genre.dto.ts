@@ -1,7 +1,7 @@
 import { Field, InputType } from 'type-graphql';
 
 @InputType()
-class GenreBookInput {
+class GenreBookDto {
   @Field()
   readonly genreId: number;
   
@@ -9,4 +9,4 @@ class GenreBookInput {
   readonly bookId: number;
 }
 
-export default GenreBookInput;
+export default GenreBookDto;

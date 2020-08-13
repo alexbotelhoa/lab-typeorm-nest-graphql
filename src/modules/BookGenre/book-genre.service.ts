@@ -6,9 +6,11 @@ import BookGenre from './book-genre.entity';
 
 @Injectable()
 class BookGenreService {
+
   public constructor(
     @InjectRepository(BookGenre) public readonly bookGenreRepo: Repository<BookGenre>,
   ) {}
+  
 }
 
 export default BookGenreService;

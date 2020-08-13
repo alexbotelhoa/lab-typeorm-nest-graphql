@@ -7,7 +7,7 @@ import {
 } from '@nestjs/graphql';
 
 import BookGenre from './book-genre.entity';
-import BookGenreInput from './book-genre.input';
+import BookGenreDto from './book-genre.dto';
 import BookGenreService from './book-genre.service';
 
 @Resolver()
@@ -28,7 +28,7 @@ class BookGenreResolver {
   }
 
   @Mutation(() => BookGenre)
-  public async createBookGenre(@Args('data') input: BookGenreInput): Promise<BookGenre> {
+  public async createBookGenre(@Args('data') input: BookGenreDto): Promise<BookGenre> {
     const bookGenre = new BookGenre();
     
     const {bookId, genreId} = input;

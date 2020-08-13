@@ -1,12 +1,9 @@
 import { Field, InputType } from 'type-graphql';
 
 @InputType()
-class AuthorInput {
-  @Field({nullable: true})
-  readonly id: number;
-  
+class GenreDto {
   @Field()
   readonly name: string;
 }
 
-export default AuthorInput;
+export default GenreDto;

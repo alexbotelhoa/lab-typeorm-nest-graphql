@@ -1,20 +1,20 @@
 import { Field, InputType } from 'type-graphql';
 
-import AuthorInput from '../Author/author.input';
+import AuthorDto from '../Author/author.dto';
 
 @InputType()
-class BookAuthorConnectInput {
+class BookAuthorConnectDto {
   @Field()
   readonly id: number;
 }
 
 @InputType()
-class BookAuthorInput {
+class BookAuthorDto {
   @Field({nullable: true})
-  readonly connect: BookAuthorConnectInput;
+  readonly connect: BookAuthorConnectDto;
 
   @Field({nullable: true})
-  readonly create: AuthorInput;
+  readonly create: AuthorDto;
 }
 
 @InputType()
@@ -23,7 +23,7 @@ class BookInput {
   readonly title: string;
 
   @Field()
-  readonly author: BookAuthorInput;
+  readonly author: BookAuthorDto;
 }
 
 export default BookInput;

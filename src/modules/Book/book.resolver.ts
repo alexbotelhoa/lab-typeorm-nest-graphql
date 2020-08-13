@@ -11,7 +11,7 @@ import Author from '../Author/author.entity';
 import AuthorService from '../Author/author.service';
 
 import Book from './book.entity';
-import BookInput from './book.input';
+import BookDto from './book.dto';
 import BookService from './book.service';
 
 @Resolver(Book)
@@ -32,7 +32,7 @@ class BookResolver {
   }
 
   @Mutation(() => Book)
-  public async createBook(@Args('data') input: BookInput): Promise<Book> {
+  public async createBook(@Args('data') input: BookDto): Promise<Book> {
     const book = new Book();
     
     book.title = input.title;
