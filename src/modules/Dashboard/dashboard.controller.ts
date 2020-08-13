@@ -7,7 +7,7 @@ class DashboardController {
 
   constructor(
     private readonly dashboardService: DashboardService
-  ) {}
+   ) {}
 
   @Get()
   async getHello(): Promise<string> {
