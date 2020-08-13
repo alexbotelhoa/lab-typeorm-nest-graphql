@@ -5,10 +5,10 @@ import { InjectRepository } from '@nestjs/typeorm';
 import Book from './book.entity';
 
 @Injectable()
-class RepositoryService {
+class BookService {
   public constructor(
     @InjectRepository(Book) public readonly bookRepo: Repository<Book>,
   ) {}
 }
 
-export default RepositoryService;
+export default BookService;

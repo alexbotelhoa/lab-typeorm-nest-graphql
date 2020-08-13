@@ -12,7 +12,9 @@ import AuthorService from './author.service';
 @Resolver()
 class AuthorResolver {
   
-  constructor(private readonly authorService: AuthorService) {}
+  constructor(
+    private readonly authorService: AuthorService
+  ) {}
 
   @Query(() => [Author])
   public async authors(): Promise<Author[]> {

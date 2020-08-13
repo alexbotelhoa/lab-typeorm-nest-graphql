@@ -21,7 +21,7 @@ class GenreResolver {
   
   constructor(
     private readonly genreService: GenreService
-    ) {}
+  ) {}
 
   @Query(() => [Genre])
   public async genres(): Promise<Genre[]> {
@@ -34,8 +34,11 @@ class GenreResolver {
 
   @Mutation(() => Genre)
   public async createGenre(@Args('data') input: GenreInput): Promise<Genre> {
-    const genre = new Genre();
-    genre.name = input.name;
+    // const genre = new Genre();
+    // genre.name = input.name;
+    // return this.genreService.genreRepo.save(genre);
+
+    const genre = this.genreService.genreRepo.create({ name: input.name });
     return this.genreService.genreRepo.save(genre);
   }
 

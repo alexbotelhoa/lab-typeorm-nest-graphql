@@ -13,7 +13,9 @@ import BookGenreService from './book-genre.service';
 @Resolver()
 class BookGenreResolver {
 
-  constructor(private readonly bookGenreService: BookGenreService) {}
+  constructor(
+    private readonly bookGenreService: BookGenreService
+  ) {}
 
   @Query(() => [BookGenre])
   public async bookGenres(): Promise<BookGenre[]> {
