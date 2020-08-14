@@ -1,27 +1,22 @@
 import { Injectable } from '@nestjs/common';
 import { Global, Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
 
-// import { DatabaseModule } from '../../Database/database.module';
+import { DatabaseModule } from '../../Database/database.module';
 
-import Author from './author.entity';
 import AuthorModel from './author.model';
 import AuthorService from './author.service';
 import AuthorResolver from './author.resolver';
 
-import AuthorProvider from './author.provider';
+import AuthorProviders from './author.providers';
 
 @Global()
 @Injectable()
 @Module({
   imports: [
-    // DatabaseModule,
-    TypeOrmModule.forFeature([
-      Author,
-    ]),
+    DatabaseModule,
   ],
   providers: [
-    // ...AuthorProvider,
+    ...AuthorProviders,
     AuthorModel,
     AuthorService,
     AuthorResolver,

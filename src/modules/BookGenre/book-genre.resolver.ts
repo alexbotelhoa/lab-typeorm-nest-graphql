@@ -19,12 +19,12 @@ class BookGenreResolver {
 
   @Query(() => [BookGenre])
   public async bookGenres(): Promise<BookGenre[]> {
-    return this.bookGenreService.bookGenreRepo.find();
+    return this.bookGenreService.bookGenreRepository.find();
   }
 
   @Query(() => BookGenre)
   public async bookGenre(@Arg('id') id: number): Promise<BookGenre> {
-    return this.bookGenreService.bookGenreRepo.findOne(id);
+    return this.bookGenreService.bookGenreRepository.findOne(id);
   }
 
   @Mutation(() => BookGenre)
@@ -36,7 +36,7 @@ class BookGenreResolver {
     bookGenre.bookId = bookId;
     bookGenre.genreId = genreId;
 
-    return this.bookGenreService.bookGenreRepo.save(bookGenre);
+    return this.bookGenreService.bookGenreRepository.save(bookGenre);
   }
 
 }

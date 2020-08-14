@@ -2,7 +2,7 @@ import { Connection } from 'typeorm';
 
 import Author from './author.entity';
 
-const AuthorProvider = [
+const AuthorProviders = [
   {
     provide: 'AuthorRepositoryToken',
     useFactory: (connection: Connection) => connection.getRepository(Author),
@@ -10,4 +10,4 @@ const AuthorProvider = [
   },
 ];
 
-export default AuthorProvider;
+export default AuthorProviders;

@@ -25,18 +25,18 @@ class GenreResolver {
 
   @Query(() => [Genre])
   public async genres(): Promise<Genre[]> {
-    return this.genreService.genreRepo.find();
+    return this.genreService.genreRepository.find();
   }
   @Query(() => Genre, {nullable: true})
   public async genre(@Args('id') id: number): Promise<Genre> {
-    return this.genreService.genreRepo.findOne(id);
+    return this.genreService.genreRepository.findOne(id);
   }
 
   @Mutation(() => Genre)
   public async createGenre(@Args('data') input: GenreDto): Promise<Genre> {
     const genre = new Genre();
     genre.name = input.name;
-    return this.genreService.genreRepo.save(genre);
+    return this.genreService.genreRepository.save(genre);
   }
 
   @ResolveProperty()

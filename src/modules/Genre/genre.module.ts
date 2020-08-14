@@ -1,24 +1,29 @@
 import { Injectable } from '@nestjs/common';
 import { Global, Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
 
-import Genre from './genre.entity';
+import { DatabaseModule } from '../../Database/database.module';
+
+import GenreModel from './genre.model';
 import GenreService from './genre.service';
 import GenreResolver from './genre.resolver';
+
+import GenreProviders from './genre.providers';
 
 @Global()
 @Injectable()
 @Module({
   imports: [
-    TypeOrmModule.forFeature([
-      Genre,
-    ]),
-    GenreResolver,
+    DatabaseModule,
   ],
   providers: [
+    ...GenreProviders,
+    GenreModel,
     GenreService,
+    GenreResolver,
   ],
+  controllers: [],
   exports: [
+    GenreModel,
     GenreService,
   ],
 })

@@ -7,8 +7,8 @@ import DashboardService from './modules/Dashboard/dashboard.service';
 
 import { AuthorModule } from './modules/Author/author.module';
 import { BookModule } from './modules/Book/book.module';
-// import { BookGenreModule } from './modules/BookGenre/book-genre.module';
-// import { GenreModule } from './modules/Genre/genre.module';
+import { BookGenreModule } from './modules/BookGenre/book-genre.module';
+import { GenreModule } from './modules/Genre/genre.module';
 
 import { genreBooksLoader } from './modules/Loaders/books.loader';
 
@@ -19,8 +19,8 @@ import { genreBooksLoader } from './modules/Loaders/books.loader';
     // Modulos
     AuthorModule,
     BookModule,
-    // BookGenreModule,
-    // GenreModule,
+    BookGenreModule,
+    GenreModule,
 
     // GraphQL
     GraphQLModule.forRoot({

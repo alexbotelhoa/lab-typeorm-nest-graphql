@@ -1,24 +1,29 @@
 import { Injectable } from '@nestjs/common';
 import { Global, Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
 
-import BookGenre from './book-genre.entity';
+import { DatabaseModule } from '../../Database/database.module';
+
+import BookGenreModel from './book-genre.model';
 import BookGenreService from './book-genre.service';
 import BookGenreResolver from './book-genre.resolver';
+
+import BookGenreProviders from './book-genre.providers';
 
 @Global()
 @Injectable()
 @Module({
   imports: [
-    TypeOrmModule.forFeature([
-      BookGenre,
-    ]),
-    BookGenreResolver,
+    DatabaseModule,
   ],
   providers: [
+    ...BookGenreProviders,
+    BookGenreModel,
     BookGenreService,
+    BookGenreResolver,
   ],
+  controllers: [],
   exports: [
+    BookGenreModel,
     BookGenreService,
   ],
 })
