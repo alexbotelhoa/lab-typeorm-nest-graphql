@@ -10,7 +10,7 @@ class DashboardService {
   ) {}
 
   async getHello(): Promise<string> {
-    return `Total de livros é ${await this.bookService.bookRepo.count()}`;
+    return `Total de livros é ${await this.bookService.bookRepository.count()}`;
   }
   
 }

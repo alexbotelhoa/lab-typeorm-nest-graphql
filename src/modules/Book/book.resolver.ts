@@ -24,11 +24,11 @@ class BookResolver {
 
   @Query(() => [Book])
   public async books(): Promise<Book[]> {
-    return this.bookService.bookRepo.find();
+    return this.bookService.bookRepository.find();
   }
   @Query(() => Book, {nullable: true})
   public async book(@Args('id') id: number): Promise<Book> {
-    return this.bookService.bookRepo.findOne({where: {id}});
+    return this.bookService.bookRepository.findOne({where: {id}});
   }
 
   @Mutation(() => Book)
@@ -43,17 +43,17 @@ class BookResolver {
       if (!input.author.create) {
         throw new Error('Either pass a valid author id for the book or provide a new author using the create input option');
       }
-      const authorToSave = this.authorService.authorRepo.create({name: input.author.create.name});
-      const savedAuthor = await this.authorService.authorRepo.save(authorToSave);
+      const authorToSave = this.authorService.authorRepository.create({name: input.author.create.name});
+      const savedAuthor = await this.authorService.authorRepository.save(authorToSave);
       book.authorId = savedAuthor.id;
     }
 
-    return this.bookService.bookRepo.save(book);
+    return this.bookService.bookRepository.save(book);
   }
 
   @ResolveProperty()
   public async author(@Parent() parent): Promise<Author> {
-    return this.authorService.authorRepo.findOne(parent.authorId);
+    return this.authorService.authorRepository.findOne(parent.authorId);
   }
   
 }

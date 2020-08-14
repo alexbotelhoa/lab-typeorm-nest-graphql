@@ -59,21 +59,10 @@ type Genre {
   book: [Book!]
 }
 
-input GenreBookDto {
-  genreId: Float!
-  bookId: Float!
-}
-
-input GenreDto {
-  name: String!
-}
-
 type Mutation {
   createAuthor(data: AuthorDto!): Author!
   updateAuthor(data: AuthorDto!): Author!
   createBook(data: BookInput!): Book!
-  createBookGenre(data: GenreBookDto!): BookGenre!
-  createGenre(data: GenreDto!): Genre!
 }
 
 type Query {
@@ -81,8 +70,4 @@ type Query {
   author(id: Float!): Author
   books: [Book!]!
   book(id: Float!): Book
-  bookGenres: [BookGenre!]!
-  bookGenre(id: Float!): BookGenre!
-  genres: [Genre!]!
-  genre(id: Float!): Genre
 }

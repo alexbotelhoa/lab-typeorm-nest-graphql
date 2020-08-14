@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { Repository } from 'typeorm';
-import { InjectRepository } from '@nestjs/typeorm';
+// import { Repository } from 'typeorm';
+// import { InjectRepository } from '@nestjs/typeorm';
 
-import Book from './book.entity';
+import BookModel from './book.model';
 
 @Injectable()
-class BookService {
-  public constructor(
-    @InjectRepository(Book) public readonly bookRepo: Repository<Book>,
-  ) {}
+class BookService extends BookModel {
+  // public constructor(
+  //   public readonly bookRepo: Repository<Book>,
+  // ) {}
 }
 
 export default BookService;

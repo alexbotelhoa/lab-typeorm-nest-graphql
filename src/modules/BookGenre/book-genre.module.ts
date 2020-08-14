@@ -23,8 +23,4 @@ import BookGenreResolver from './book-genre.resolver';
   ],
 })
 
-class BookGenreModule {
-
-}
-
-export default BookGenreModule;
+export class BookGenreModule {};

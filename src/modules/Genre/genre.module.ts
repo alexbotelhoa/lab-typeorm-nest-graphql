@@ -23,8 +23,4 @@ import GenreResolver from './genre.resolver';
   ],
 })
 
-class GenreModule {
-
-}
-
-export default GenreModule;
+export class GenreModule {};

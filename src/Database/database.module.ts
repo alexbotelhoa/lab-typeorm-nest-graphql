@@ -1,10 +1,11 @@
 import 'reflect-metadata';
 import { Module } from '@nestjs/common';
 
-import { databaseProviders } from './database.providers';
+import DatabaseProviders from './database.providers';
 
 @Module({
-  providers: [...databaseProviders],
-  exports: [...databaseProviders],
+  providers: [...DatabaseProviders],
+  exports: [...DatabaseProviders],
 })
-export class DatabaseModule {}
+
+export class DatabaseModule {};

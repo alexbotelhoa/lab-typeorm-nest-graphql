@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { Repository } from 'typeorm';
-import { InjectRepository } from '@nestjs/typeorm';
+// import { Repository } from 'typeorm';
+// import { InjectRepository } from '@nestjs/typeorm';
 
-import Author from './author.entity';
+import AuthorModel from './author.model';
 
 @Injectable()
-class AuthorService {
-  public constructor(
-    @InjectRepository(Author) public readonly authorRepo: Repository<Author>,
-  ) {}
+class AuthorService extends AuthorModel {
+  // public constructor(
+  //   public readonly authorModel: AuthorModel,
+  // ) {}
 }
 
 export default AuthorService;

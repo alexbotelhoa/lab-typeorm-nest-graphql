@@ -10,7 +10,7 @@ import BookGenre from './book-genre.entity';
 import BookGenreDto from './book-genre.dto';
 import BookGenreService from './book-genre.service';
 
-@Resolver()
+@Resolver(BookGenre)
 class BookGenreResolver {
 
   constructor(
