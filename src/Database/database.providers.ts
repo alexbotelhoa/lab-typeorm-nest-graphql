@@ -12,8 +12,9 @@ const DatabaseProviders = [
         password: "",
         database: "lab_graphql_db1",
         synchronize: true,
-        migrations: [__dirname + '/migrations/*{.ts,.js}'],
+        logging: false,
         entities: [__dirname + '/../modules/**/*.entity{.ts,.js}'],
+        migrations: [__dirname + '/migrations/*{.ts,.js}'],
       });
     },
   },

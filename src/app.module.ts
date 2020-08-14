@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
 
 import DashboardController from './modules/Dashboard/dashboard.controller';
@@ -14,7 +13,6 @@ import { genreBooksLoader } from './modules/Loaders/books.loader';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot(),
 
     // Modulos
     AuthorModule,
