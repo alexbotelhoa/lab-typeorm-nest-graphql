@@ -18,30 +18,22 @@ class AuthorResolver {
 
   @Query(() => [Author])
   public async authors(): Promise<Author[]> {
-    return this.authorService.authorRepository.find();
+    return this.authorService.authorAll();
   }
+
   @Query(() => Author, {nullable: true})
   public async author(@Args('id') id: number): Promise<Author> {
-    return this.authorService.authorRepository.findOne({where: { id }});
+    return this.authorService.authorFind(id);
   }
 
   @Mutation(() => Author)
   public async createAuthor(@Args('data') input: AuthorDto): Promise<Author> {
-    const author = this.authorService.authorRepository.create({ name: input.name });
-    return this.authorService.authorRepository.save(author);
+    return this.authorService.authorCreate(input);    
   }
 
   @Mutation(() => Author)
   public async updateAuthor(@Args('data') input: AuthorDto): Promise<Author> { 
-    const { id, name } = input;
-
-    const authorFinded = await this.authorService.authorRepository.findOne({ where: { id } });
-
-    authorFinded.name = name;
-    
-    return this.authorService.authorRepository.save(authorFinded);
+    return this.authorService.authorUpdate(input); 
   }
 
 }
-
-export default AuthorResolver;
