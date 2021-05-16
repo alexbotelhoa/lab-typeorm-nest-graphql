@@ -37,3 +37,5 @@ class AuthorResolver {
   }
 
 }
+
+export default AuthorResolver;
