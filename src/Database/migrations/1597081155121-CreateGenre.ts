@@ -14,7 +14,7 @@ export class CreateGenre1597081155121 implements MigrationInterface {
                 generationStrategy: 'increment',
             },
             {
-                name: 'genre_name',
+                name: 'name',
                 type: 'varchar',
                 length: '255',
                 isNullable: false,

@@ -27,11 +27,11 @@ class AuthorModel {
   async update(input: AuthorDto): Promise<Author> {
     const { id, name } = input;
 
-    const authorFinded = await this.authorRepository.findOne({ where: { id } });
+    const authorFound = await this.authorRepository.findOne({ where: { id } });
 
-    authorFinded.name = name;
+    authorFound.name = name;
     
-    return this.authorRepository.save(authorFinded);
+    return this.authorRepository.save(authorFound);
   }
 
 }

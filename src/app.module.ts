@@ -14,7 +14,7 @@ import { genreBooksLoader } from './modules/Loaders/books.loader';
 @Module({
   imports: [
 
-    // Modulos
+    // Módulos
     AuthorModule,
     BookModule,
     BookGenreModule,

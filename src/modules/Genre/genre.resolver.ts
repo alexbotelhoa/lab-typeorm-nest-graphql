@@ -1,11 +1,11 @@
 import { 
   Args, 
+  Query,
+  Parent, 
   Context, 
   Mutation, 
-  Parent, 
-  Query, 
-  ResolveProperty, 
-  Resolver 
+  Resolver,
+  ResolveProperty
 } from '@nestjs/graphql';
 
 import Book from '../Book/book.entity';

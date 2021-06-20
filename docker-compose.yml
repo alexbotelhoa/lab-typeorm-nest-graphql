@@ -1,0 +1,41 @@
+# v2 syntax
+version: '3'
+
+# Named volumes
+volumes:
+  postgres:
+
+services:
+  # Postgres
+  postgres:
+    container_name: lab-nest-postgres
+    image: postgres:9.6
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: 123456
+      PGDATA: /data/postgres
+    volumes:
+       - postgres:/data/postgres
+    ports:
+      - "54322:5432"
+    restart: unless-stopped
+    networks:
+      - local
+
+  # PG ADMIN
+  pgadmin:
+    container_name: lab-nest-pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@pgadmin.com"
+      PGADMIN_DEFAULT_PASSWORD: "123456"
+    ports:
+      - "8889:80"
+    depends_on:
+      - postgres
+    networks:
+      - local
+
+networks:
+  local:
+    driver: bridge

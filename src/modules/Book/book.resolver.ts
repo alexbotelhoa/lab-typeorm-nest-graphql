@@ -43,8 +43,13 @@ class BookResolver {
       if (!input.author.create) {
         throw new Error('Either pass a valid author id for the book or provide a new author using the create input option');
       }
-      const authorToSave = this.authorService.authorRepository.create({name: input.author.create.name});
-      const savedAuthor = await this.authorService.authorRepository.save(authorToSave);
+      
+      const authorToSave = {
+        id: null,
+        name: input.author.create.name
+      };
+
+      const savedAuthor = await this.authorService.authorCreate(authorToSave);
       book.authorId = savedAuthor.id;
     }
 
@@ -53,7 +58,7 @@ class BookResolver {
 
   @ResolveProperty()
   public async author(@Parent() parent): Promise<Author> {
-    return this.authorService.authorRepository.findOne(parent.authorId);
+    return this.authorService.authorFind(parent.authorId);
   }
   
 }

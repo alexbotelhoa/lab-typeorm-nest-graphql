@@ -20,7 +20,7 @@ export default class Genre {
   id: number;
 
   @Field()
-  @Column({name: 'genre_name'})
+  @Column({name: 'name'})
   name: string;
 
   @Field()

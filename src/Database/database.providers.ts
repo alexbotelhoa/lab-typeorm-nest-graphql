@@ -5,12 +5,12 @@ const DatabaseProviders = [
     provide: 'DbConnectionToken',
     useFactory: async () => {
       return await createConnection({
-        type: 'mysql',
+        type: 'postgres',
         host: 'localhost',
-        port: 3306,
-        username: "root",
-        password: "",
-        database: "lab_graphql_db1",
+        port: 54322,
+        username: "user",
+        password: "123456",
+        database: "lab_nest",
         synchronize: true,
         logging: false,
         entities: [__dirname + '/../modules/**/*.entity{.ts,.js}'],
